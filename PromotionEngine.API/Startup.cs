@@ -13,7 +13,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PromotionEngine.Core;
 using PromotionEngine.Core.Models;
+using PromotionEngine.Core.ProductService;
 using PromotionEngine.Core.Promotions;
+using PromotionEngine.Core.PromotionService;
 
 namespace PromotionEngine.API
 {
@@ -32,7 +34,8 @@ namespace PromotionEngine.API
             services.AddControllers();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSingleton<IPromotionEngine, Core.PromotionEngine>();
+            services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IPromotionEngine, Core.PromotionService.PromotionEngine>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

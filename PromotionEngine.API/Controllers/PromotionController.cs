@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PromotionEngine.Core;
 using PromotionEngine.Core.Models;
+using PromotionEngine.Core.PromotionService;
 
 namespace PromotionEngine.API.Controllers
 {
