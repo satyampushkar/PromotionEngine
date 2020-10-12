@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PromotionEngine.Core.Promotions
 {
-    class BuyXAndYForFixedPrice : Promotion
+    public class BuyXAndYForFixedPrice : Promotion
     {
         public Product ProductX { get; set; }
         public Product ProductY { get; set; }
