@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0fxGhpHobevDS7LLGSOaQK+bwub5cIvm2XrV+KFkpewydSxlQ1av6m8k5bCXjT3JnO778CyWsilv/sCNxe1x8A==",
+  "success": true,
+  "projectFilePath": "C:\\CODE\\myDev\\c#\\PromotionEngine\\PromotionEngine.API\\PromotionEngine.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\91961\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.8\\microsoft.extensions.logging.abstractions.3.1.8.nupkg.sha512",
+    "C:\\Users\\91961\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
