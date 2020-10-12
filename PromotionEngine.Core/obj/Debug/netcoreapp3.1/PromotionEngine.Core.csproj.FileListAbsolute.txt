@@ -1,9 +1,0 @@
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\bin\Debug\netcoreapp3.1\PromotionEngine.Core.deps.json
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\bin\Debug\netcoreapp3.1\PromotionEngine.Core.dll
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\bin\Debug\netcoreapp3.1\PromotionEngine.Core.pdb
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.AssemblyInfoInputs.cache
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.AssemblyInfo.cs
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.dll
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.pdb
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.csproj.CoreCompileInputs.cache
-C:\CODE\myDev\c#\PromotionEngine\PromotionEngine.Core\obj\Debug\netcoreapp3.1\PromotionEngine.Core.csprojAssemblyReference.cache
