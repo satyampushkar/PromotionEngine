@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+using PromotionEngine.API.DTO;
 using PromotionEngine.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace PromotionEngine.API.Test
 
         [Theory]
         [MemberData(nameof(CartData))]
-        public async Task TestBillValue(Cart cart, double expectedBillValue)
+        public async Task TestBillValue(DTO.Cart cart, double expectedBillValue)
         {
             // Arrange
             double actualBillValue;
@@ -33,7 +34,7 @@ namespace PromotionEngine.API.Test
             }
             else
             {
-                string strPayLoad = JsonSerializer.Serialize<Cart>(cart, new JsonSerializerOptions());
+                string strPayLoad = JsonSerializer.Serialize<DTO.Cart>(cart, new JsonSerializerOptions());
                 var response = await client.PostAsync("api/promotion", new StringContent(strPayLoad, Encoding.UTF8, "application/json"));
 
                 // Assert
@@ -48,36 +49,33 @@ namespace PromotionEngine.API.Test
         }
         public static IEnumerable<object[]> CartData()
         {
-            Product productA = new Product { SKUId = "A", Price = 50 };
-            Product productB = new Product { SKUId = "B", Price = 30 };
-            Product productC = new Product { SKUId = "C", Price = 20 };
-            Product productD = new Product { SKUId = "D", Price = 15 };
-
             //Scenario A
-            Cart cart1 = new Cart();
-            var cartItemList = new List<CartItem>();
-            cartItemList.Add(new CartItem { Product = productA, Quantity = 1 });
-            cartItemList.Add(new CartItem { Product = productB, Quantity = 1 });
-            cartItemList.Add(new CartItem { Product = productC, Quantity = 1 });
-            cart1.CartItem = cartItemList;
+            DTO.Cart cart1 = new DTO.Cart();
+            cart1.CartItems = new List<DTO.CartItem>() 
+            {
+                new DTO.CartItem{ ProductId ="A", Quantity = 1},
+                new DTO.CartItem{ ProductId ="B", Quantity = 1},
+                new DTO.CartItem{ ProductId ="C", Quantity = 1},
+            };
 
             //Scenario B
-            Cart cart2 = new Cart();
-            cartItemList = new List<CartItem>();
-            cartItemList.Add(new CartItem { Product = productA, Quantity = 5 });
-            cartItemList.Add(new CartItem { Product = productB, Quantity = 5 });
-            cartItemList.Add(new CartItem { Product = productC, Quantity = 1 });
-            cart2.CartItem = cartItemList;
+            DTO.Cart cart2 = new DTO.Cart();
+            cart2.CartItems = new List<DTO.CartItem>()
+            {
+                new DTO.CartItem{ ProductId ="A", Quantity = 5},
+                new DTO.CartItem{ ProductId ="B", Quantity = 5},
+                new DTO.CartItem{ ProductId ="C", Quantity = 1},
+            };
 
             //Scenario C
-            Cart cart3 = new Cart();
-            cartItemList = new List<CartItem>();
-            cartItemList.Add(new CartItem { Product = productA, Quantity = 3 });
-            cartItemList.Add(new CartItem { Product = productB, Quantity = 5 });
-            cartItemList.Add(new CartItem { Product = productC, Quantity = 1 });
-            cartItemList.Add(new CartItem { Product = productD, Quantity = 1 });
-            cart3.CartItem = cartItemList;
-
+            DTO.Cart cart3 = new DTO.Cart();
+            cart3.CartItems = new List<DTO.CartItem>()
+            {
+                new DTO.CartItem{ ProductId ="A", Quantity = 3},
+                new DTO.CartItem{ ProductId ="B", Quantity = 5},
+                new DTO.CartItem{ ProductId ="C", Quantity = 1},
+                new DTO.CartItem{ ProductId ="D", Quantity = 1},
+            };
             return new List<object[]>
             {
                 new object[] { cart1, 100 },

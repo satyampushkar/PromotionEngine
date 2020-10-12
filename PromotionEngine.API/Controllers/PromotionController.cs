@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,23 +16,25 @@ namespace PromotionEngine.API.Controllers
     public class PromotionController : ControllerBase
     {
         private readonly IPromotionEngine _promotionEngine;
+        private readonly IMapper _mapper;
         private readonly ILogger<PromotionController> _logger;
-        public PromotionController(IPromotionEngine promotionEngine, ILogger<PromotionController> logger)
+        public PromotionController(IPromotionEngine promotionEngine, IMapper mapper, ILogger<PromotionController> logger)
         {
             _promotionEngine = promotionEngine;
+            _mapper = mapper;
             _logger = logger;
         }
 
         [HttpPost]
-        public async Task<ActionResult<double>> ApplyPromoAndCalculateBill(Cart cart)
+        public async Task<ActionResult<double>> ApplyPromoAndCalculateBill(DTO.Cart cart)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            _promotionEngine.ApplyPromo(cart);
-            return cart.DiscountedTotal;
+            var  updateCart = _promotionEngine.ApplyPromo(_mapper.Map<Cart>(cart));
+            return updateCart.DiscountedTotal;
         }
     }
 }

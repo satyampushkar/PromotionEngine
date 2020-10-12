@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace PromotionEngine.API
         {
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSingleton<IPromotionEngine, Core.PromotionEngine>();
         }
 
@@ -41,8 +43,6 @@ namespace PromotionEngine.API
                 app.UseDeveloperExceptionPage();
             }
 
-            InitializePromotionEngine(app);
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -52,41 +52,6 @@ namespace PromotionEngine.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-        }
-
-        private static void InitializePromotionEngine(IApplicationBuilder app)
-        {
-            //
-            Product productA = new Product { SKUId = "A", Price = 50 };
-            Product productB = new Product { SKUId = "B", Price = 30 };
-            Product productC = new Product { SKUId = "C", Price = 20 };
-            Product productD = new Product { SKUId = "D", Price = 15 };
-            var promoEngine = app.ApplicationServices.GetService<IPromotionEngine>();
-            promoEngine.Add(new BuyNForFixedPrice
-            {
-                Priority = 1,
-                Product = productA,
-                NValue = 3,
-                FixedPrice = 130
-            });
-
-            promoEngine.Add(new BuyNForFixedPrice
-            {
-                Priority = 2,
-                Product = productB,
-                NValue = 2,
-                FixedPrice = 45
-            });
-
-            promoEngine.Add(new BuyXAndYForFixedPrice
-            {
-                Priority = 3,
-                ProductX = productC,
-                ProductXReqdQty = 1,
-                ProductY = productD,
-                ProductYReqdQty = 1,
-                FixedPrice = 30
             });
         }
     }
