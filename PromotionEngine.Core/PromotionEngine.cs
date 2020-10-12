@@ -13,7 +13,7 @@ namespace PromotionEngine.Core
         private readonly ILogger<PromotionEngine> _logger;
         public PromotionEngine(ILogger<PromotionEngine> logger)
         {
-            _promotions = new SortedSet<Promotion>();
+            _promotions = new SortedSet<Promotion>(new ComparerForPromotionByPriority());
             _logger = logger;
         }
         public void Add(Promotion promotion)
