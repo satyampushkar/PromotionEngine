@@ -35,7 +35,7 @@ namespace PromotionEngine.API.Test
             else
             {
                 string strPayLoad = JsonSerializer.Serialize<DTO.Cart>(cart, new JsonSerializerOptions());
-                var response = await client.PostAsync("api/promotion", new StringContent(strPayLoad, Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("api/promotion/apply", new StringContent(strPayLoad, Encoding.UTF8, "application/json"));
 
                 // Assert
                 response.EnsureSuccessStatusCode();
